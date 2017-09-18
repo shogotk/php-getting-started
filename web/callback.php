@@ -2,9 +2,9 @@
   // アカウント情報を設定します。
   // LINE developers サイトの Channels > Basic informationに
   // 記載されている情報を設定します。
-  $channelId = "************"; // Channel ID
-  $channelSecret = "********************************"; // Channel Secret
-  $mid = "********************************"; // MID
+  $channelId = "1530966911"; // Channel ID
+  $channelSecret = "bf4b6377bdb827fc42ed49ec968f52c7"; // Channel Secret
+  $userId = "Ub9cb68efbee41393944f1ef6549ce4be"; // MID
 
   // LINEから送信されたメッセージ（POSTリクエストのボディ部分）を取得します。
   // 以下のようなJSONフォーマットの文字列が送信されます。
@@ -32,7 +32,7 @@
     "Content-Type: application/json; charset=UTF-8",
     "X-Line-ChannelID: {$channelId}", // Channel ID
     "X-Line-ChannelSecret: {$channelSecret}", // Channel Secret
-    "X-Line-Trusted-User-With-ACL: {$mid}", // MID
+    "X-Line-Trusted-User-With-ACL: {$userId}", // MID
   );
 
   // ユーザに返すテキスト。
@@ -61,13 +61,13 @@ EOM;
 EOM;
 
   // LINE BOT API へのリクエストを作成して実行
-  $curl = curl_init('https://trialbot-api.line.me/v1/events');
+  $curl = curl_init('https://trialbot-api.line.me/v2/events');
   curl_setopt($curl, CURLOPT_POST, true);
   curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
   curl_setopt($curl, CURLOPT_POSTFIELDS, $responseMessage);
   curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
   // Heroku Addon の Fixie のプロキシURLを指定。詳細は後述。 
   curl_setopt($curl, CURLOPT_HTTPPROXYTUNNEL, 1);
-  curl_setopt($curl, CURLOPT_PROXY, getenv('FIXIE_URL'));
+  curl_setopt($curl, CURLOPT_PROXY, getenv('http://fixie:XwbPScbvJ9jXaS1@velodrome.usefixie.com:80'));
   $output = curl_exec($curl);
 ?>

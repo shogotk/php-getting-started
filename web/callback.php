@@ -2,7 +2,7 @@
   // アカウント情報を設定します。
   // LINE developers サイトの Channels > Basic informationに
   // 記載されている情報を設定します。
-  $channelId = "1530966911"; // Channel ID
+  $channelId = ""; // Channel ID
   $channelSecret = "bf4b6377bdb827fc42ed49ec968f52c7"; // Channel Secret
   $userId = "Ub9cb68efbee41393944f1ef6549ce4be"; // MID
 
